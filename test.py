@@ -2,9 +2,16 @@
 # _*_ coding: utf-8 _*_
 
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+import time
 
-driver = webdriver.Firefox()
-driver.get("http://www.so.com")
-assert u"360搜索" in driver.title
-print driver.title
-driver.close()
+browser = webdriver.Firefox()  # Get local session of firefox
+browser.get("https://www.baidu.com")  # Load page
+
+browser.find_element_by_id("kw").send_keys("webdriver")
+browser.find_element_by_id("su").click()
+
+browser.implicitly_wait(30)
+print ("The result is right")
+browser.quit()

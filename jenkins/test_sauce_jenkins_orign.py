@@ -16,14 +16,15 @@ sauce = SauceClient(USERNAME, ACCESS_KEY)
 class Selenium2OnSauce(unittest.TestCase):
  
     def setUp(self):
-        #desired_capabilities = webdriver.DesiredCapabilities.FIREFOX 
-        desired_capabilities = {}
+        desired_capabilities = webdriver.DesiredCapabilities.FIREFOX
         desired_capabilities['browserName'] = 'firefox'
         desired_capabilities['version'] = '24'
         desired_capabilities['platform'] = 'Windows 7'
         desired_capabilities['name'] = 'Testing Search functionality in Python website using Python at Sauce'
         sauce_url = 'http://%s:%s@ondemand.saucelabs.com:80/wd/hub'
         print desired_capabilities
+        print "-" * 50
+        print os.environ
  
         self.driver = webdriver.Remote(
             desired_capabilities=desired_capabilities,
